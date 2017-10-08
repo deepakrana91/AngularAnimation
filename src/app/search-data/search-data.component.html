@@ -1,0 +1,44 @@
+
+
+<div class="row">
+    <div class="col-xs-12">
+      <input type="text" 
+      [(ngModel)]="filterName" 
+      id="search" 
+      placeholder="Type to Search" 
+      class="form-control"
+      style="margin-top:30px">
+      <br><br>
+      <button class="btn btn-danger" (click)="onDelete()">Delete User</button>
+  
+      <!-- <button class="btn btn-primary" type="button" (click)="onGet()">Get Data</button> -->
+  
+      <hr>
+      <h3>Form Values</h3>
+      <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Designation</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of userDataArray | filter:filterName" [@userState]='stateExpression' (mouseenter)="mouseEnter()"
+              (mouseleave)="mouseLeave()" [@flyInOut]="in" (@flyInOut.start)="animationStarted($event)" (@flyInOut.done)="animationDone($event)">
+                <td>{{item.firstname | titleCase}}</td>
+                <td>{{item.lastname}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.date| date:'shortDate'}}</td>
+                <td>{{item.Prefix}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+    </div>
+  </div>
